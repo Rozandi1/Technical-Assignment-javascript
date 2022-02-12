@@ -98,15 +98,14 @@ console.log(checkBMI(weight2, height2));
 /// EDIT HERE
 
 function convToUpperCase(sentence) {
-let flagging = false
-let output = ''
-    for(let i = sentence.length -1; i >= 0; i++){
-        if (string[i] === sentence.toUpperCase){
-            output += sentence[i]; 
-        }
-        return output;
+let splitString = sentence.toLowerCase().split("");
+    for (let i = 0; i < splitString.length; i++){
+        splitString[i] = splitString[i].charAt(0).toUpperCase() + splitString[i].substring(1);
+    }
+    return splitString.join('');
 }
-console.log(convToUpperCase("i love javascript"));
+console.log(convToUpperCase("halo bandung"));
+console.log(convToUpperCase("hello worldwide"));
 
 
 /// Soal - 04
@@ -124,14 +123,27 @@ console.log(convToUpperCase("i love javascript"));
 /// (String) huruf yang pertama kali tidak ada kembarannya
 
 /// EDIT HERE
-function firstNonRepeatedChar(word) {
-    let i = word;
-    if(word = "kata terpisah"){
-        return "kata tidak boleh dipisah";
-    }else if (word = "inputan tidak kembar"){
-        return "";
-    }else{
-        return word.length;
+function firstNonRepeatedChar(word){
+    let huruf;
+    for(let i = 0; i < word.length; i++){
+        huruf = word[i];
+        if(huruf === ""){
+            return "kata tidak boleh dipisah";
+        }
     }
+    for (let i = 0; i < word.length; i++){
+        huruf = word[i];
+        let checkWord = false;
+        for (let j = 0; j < word.length; j++){
+            if (huruf === word[j] && j !== i){
+                checkWord = true;
+            }
+        }
+        if (checkWord === false){
+            return huruf;
+        }
+    }
+    return "";
 }
-console.log(firstNonRepeatedChar());
+console.log(firstNonRepeatedChar("hello world"));
+console.log(firstNonRepeatedChar("alloha"));
