@@ -166,6 +166,47 @@
       const elBtnCancel = document.querySelector('#btn-cancel');
       
       // EDIT HERE
+      const removeNone = document.querySelector(".col-12");
+      const addNone = document.querySelector(".btn");
+
+      elBtnCancel.addEventListener("click", showComment);
+      elBtnCancel.addEventListener("click", cancelComment);
+      elBtnCancel.addEventListener("click", submitComment);
+
+      function showComment(){
+        elCommentSection.removeChild("class", "d-none")
+        removeNone.classList.remove("d-none");
+        addNone.classList.add("d-none");
+      }
+
+      function cancelComment(){
+        removeNone.classList.remove("d-none");
+        addNone.classList.add("d-none");
+
+        let Username = elInputUsername.value;
+        let Comment = elInputComment.value;
+
+        let li = document.createElement("li")
+        elCommentList.appendChild(li).innerHTML = 
+        <li class = " list-group-item d-flex justify-content-between align-items-start">
+          <div class = "ms-2 me-auto">
+            <div class = "fw-bold text-capitalize"> ${Username}</div>
+            ${Comment}
+            </div>
+          </li>;
+
+          console.log(Username);
+          console.log(Comment);
+
+          removeNone.classList.add("d-none");
+          addNone.classList.remove("d-none");
+
+          let Username = elInputUsername.value = "";
+          let Comments = elInputComment.value = "";
+
+      }
+
+
 
     </script>
   </body>
