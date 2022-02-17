@@ -172,10 +172,27 @@
     <!-- JavaScript -->
     <script>
       /// EDIT HERE
-      let modal = document.getElementById("detail-article");
-      console.log(modal);
-      let katalog = document.querySelector("")
+      const buttonModal = document.querySelectorAll('.btn-modal');
 
+      for (let btnmodal of buttonModal) {
+        btnmodal.onclick = () => {
+          const cardId = btnmodal.getAttribute('card-id');
+          const cardTitle = document.querySelector(`#card-${cardId}-title`);
+          const modalTitle = document.getElementById('modal-title');
+
+          const cardText = document.querySelector(`#card-${cardId}-text`);
+          const modalText = document.getElementById('modal-text');
+
+          const cardImg = document.querySelector(`#card-${cardId}-image`);
+          const modalImg = document.getElementById('modal-image');
+
+          const cardsrc = cardImg.getAttribute('src');
+
+          modalImg.setAttribute('src', cardsrc);
+          modalTitle.innerHTML = cardTitle.innerHTML;
+          modalText.innerHTML = cardText.innerHTML;
+        };
+      }
     </script>
 
     <!-- Bootstrap Bundle with Popper -->
